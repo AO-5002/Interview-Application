@@ -10,7 +10,6 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
       clientId={process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID ?? ""}
       authorizationParams={{
         redirect_uri: process.env.NEXT_PUBLIC_AUTH0_REDIRECT_URI ?? "",
-        audience: "http://localhost:3000/",
       }}
     >
       {children}
