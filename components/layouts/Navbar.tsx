@@ -28,7 +28,7 @@ function DropDownProfile({ user, logout }: { user: any; logout: any }) {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>Profile</DropdownMenuItem>
-        <DropdownMenuItem>Billing</DropdownMenuItem>
+        <DropdownMenuItem>Swap</DropdownMenuItem>
         <DropdownMenuItem>Team</DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => logout({ returnTo: window.location.origin })}
@@ -42,7 +42,7 @@ function DropDownProfile({ user, logout }: { user: any; logout: any }) {
 
 function ElementWrapper({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex items-center gap-2 p-3 bg-blac text-white rounded-lg">
+    <div className="flex items-center gap-2 p-3 border text-white rounded-lg">
       {children}
     </div>
   );
@@ -53,14 +53,10 @@ function Navbar() {
 
   return (
     <header className="w-full h-16 text-white bg-zinc-900 shadow-md px-8 md:px-16">
-      <nav className="w-full h-full flex flex-row items-center justify-cneter ">
+      <nav className="w-full h-full flex flex-row items-center justify-between">
         <Link href="/">
           <span className="font-bold text-base p-2 rounded">Home</span>
         </Link>
-
-        <ElementWrapper>
-          <ToggleMode />
-        </ElementWrapper>
 
         {isAuthenticated && (
           <div className="flex flex-row gap-4 items-center">
@@ -76,6 +72,9 @@ function Navbar() {
               <span className="hidden md:block text-xs font-bold">
                 Interviews
               </span>
+            </ElementWrapper>
+            <ElementWrapper>
+              <ToggleMode />
             </ElementWrapper>
             <ElementWrapper>
               <DropDownProfile user={user} logout={logout} />
