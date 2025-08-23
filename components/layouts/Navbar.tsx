@@ -5,6 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Bell } from "lucide-react";
 import { Folder } from "lucide-react";
 import { ToggleMode } from "../ToggleMode";
+import ElementWrapper from "../ElementWrapper";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -37,14 +38,6 @@ function DropDownProfile({ user, logout }: { user: any; logout: any }) {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
-}
-
-function ElementWrapper({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="flex items-center gap-2 p-3 border-zinc-600 border text-white rounded-lg">
-      {children}
-    </div>
   );
 }
 

@@ -1,4 +1,6 @@
 import React from "react";
+import { ScrollArea } from "@/components/ui/scroll-area";
+
 interface ExampleProperty {
   input: number[];
   output: number[];
@@ -32,7 +34,7 @@ function ExampleList({ input, output, explanation }: ExampleProperty) {
   return (
     <div className="flex flex-col items-start gap-2 py-8">
       <h2>Example #1</h2>
-      <div className="pl-4 border-l border-zinc-500 font-bold">
+      <div className="pl-4 border-l border-zinc-500 font-bold text-sm">
         <p>
           Input:{" "}
           <ExampleItemWrapper>{JSON.stringify(input)}</ExampleItemWrapper>
