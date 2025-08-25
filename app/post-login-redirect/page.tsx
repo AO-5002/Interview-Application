@@ -11,6 +11,8 @@ const PostLoginRedirect = () => {
 
     if (isAuthenticated && user) {
       window.location.replace(`/dashboard/${user.name}`);
+    } else {
+      window.location.replace(`/`);
     }
   }, [isAuthenticated, isLoading, user]);
 
