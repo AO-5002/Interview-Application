@@ -1,5 +1,6 @@
 "use client";
 import { Auth0Provider } from "@auth0/auth0-react";
+import { Toaster } from "@/components/ui/sonner";
 
 import React from "react";
 
@@ -14,6 +15,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
       }}
     >
       {children}
+      <Toaster />
     </Auth0Provider>
   );
 }

@@ -32,7 +32,7 @@ function ExampleItemWrapper({ children }: { children: React.ReactNode }) {
 
 function ExampleList({ input, output, explanation }: ExampleProperty) {
   return (
-    <div className="flex flex-col items-start gap-2 py-8">
+    <div className="flex flex-col items-start gap-2 py-8 text-foreground">
       <h2>Example #1</h2>
       <div className="pl-4 border-l border-zinc-500 font-bold text-sm">
         <p>
@@ -61,7 +61,9 @@ function AssignmentUI() {
       <div className="w-full h-full">
         <div className="self-start flex flex-row items-center justify-start gap-2 pb-4">
           <span className="text-zinc-500 font-bold text-xs">01</span>
-          <h1 className="text-xl font-bold tracking-wide">Two Sum</h1>
+          <h1 className="text-xl font-bold tracking-wide text-foreground">
+            Two Sum
+          </h1>
         </div>
         <DescriptionText />
         <ExampleList

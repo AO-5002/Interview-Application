@@ -1,10 +1,34 @@
 "use client";
+import { useEffect, useState } from "react";
 import LoginBtn from "@/components/AuthComponents/LoginBtn";
 import { useAuth0 } from "@auth0/auth0-react";
 import LogoutButton from "@/components/AuthComponents/LogoutBtn";
 
 export default function Home() {
   const { isAuthenticated } = useAuth0();
+
+  const TokenDisplay = () => {
+    const { getAccessTokenSilently, isAuthenticated } = useAuth0();
+    const [token, setToken] = useState("");
+
+    useEffect(() => {
+      const fetchToken = async () => {
+        try {
+          const accessToken = await getAccessTokenSilently();
+          setToken(accessToken);
+          console.log("Access Token:", accessToken);
+        } catch (err) {
+          console.error("Error getting token", err);
+        }
+      };
+
+      if (isAuthenticated) {
+        fetchToken();
+      }
+    }, [getAccessTokenSilently, isAuthenticated]);
+  };
+
+  TokenDisplay();
 
   return (
     <>
