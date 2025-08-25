@@ -1,20 +1,23 @@
 "use client";
 
 import { useAuth0 } from "@auth0/auth0-react";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const PostLoginRedirect = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
+  const router = useRouter();
 
   useEffect(() => {
     if (isLoading) return;
 
     if (isAuthenticated && user) {
-      window.location.replace(`/dashboard/${user.name}`);
+      // Use Next.js router instead of window.location.replace
+      router.push(`/dashboard/${user.name}`);
     } else {
-      window.location.replace(`/`);
+      router.push("/");
     }
-  }, [isAuthenticated, isLoading, user]);
+  }, [isAuthenticated, isLoading, user, router]);
 
   return <div>Redirecting...</div>;
 };

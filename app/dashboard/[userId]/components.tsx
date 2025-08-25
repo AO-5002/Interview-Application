@@ -17,7 +17,7 @@ function BoxLayout({ children }: { children: React.ReactNode }) {
 
 function Card({ data }: { data: BoxContentProps }) {
   return (
-    <div className="shrink-0 w-full md:w-64 h-40 rounded-lg bg-background flex flex-col items-center justify-between gap-8 p-4 text-foreground shadow-lg">
+    <div className="shrink-0 w-full md:w-64 h-40 rounded-lg bg-background flex flex-col items-center justify-between gap-8 p-4 text-foreground border shadow-lg">
       <div className="self-start flex flex-col gap-2 items-start">
         <div className="flex items-center justify-center bg-foreground p-2 rounded-full text-background">
           {data.icon}
