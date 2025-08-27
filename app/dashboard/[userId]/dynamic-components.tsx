@@ -137,11 +137,11 @@ function DialogCreateRoom() {
     <Dialog>
       <form>
         <DialogTrigger asChild>
-          <Button variant="outline">Open Dialog</Button>
+          <Button>Create</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Create a Room</DialogTitle>
+            <DialogTitle>Create</DialogTitle>
             <DialogDescription>
               Configure your room settings and invite users to join the call.
             </DialogDescription>
@@ -167,7 +167,7 @@ function DialogCreateRoom() {
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
-            <Button type="submit">Save changes</Button>
+            <Button type="submit">Create Room</Button>
           </DialogFooter>
         </DialogContent>
       </form>
