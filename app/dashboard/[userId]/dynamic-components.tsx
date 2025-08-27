@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { EllipsisVertical } from "lucide-react";
 import {
   Dialog,
   DialogClose,
@@ -27,6 +28,8 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const items = [
   {
@@ -176,12 +179,21 @@ function DialogCreateRoom() {
 }
 
 function LoadButtonAccordingly({ type }: { type: string }) {
+  const router = useRouter();
+  const pathname = usePathname();
   return (
     <>
       {type === "Create" && <DialogCreateRoom />}
       {type === "Join" && <Button>Join</Button>}
       {type === "View" && <Button>View</Button>}
-      {type === "Build" && <Button>Build</Button>}
+      {type === "Build" && (
+        <div className="flex flex-row items-center gap-4 w-full justify-between">
+          <Button onClick={() => router.push(`${pathname}/assignments`)}>
+            Build
+          </Button>
+          <EllipsisVertical />
+        </div>
+      )}
     </>
   );
 }
