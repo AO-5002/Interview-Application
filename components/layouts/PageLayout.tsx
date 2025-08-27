@@ -1,4 +1,7 @@
+"use client";
 import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import NoAuthPage from "../NoAuthPage";
 
 function PageLayout({
   children,
@@ -7,6 +10,12 @@ function PageLayout({
   children: React.ReactNode;
   className?: string;
 }) {
+  const { isAuthenticated } = useAuth0();
+
+  if (!isAuthenticated) {
+    return <NoAuthPage />;
+  }
+
   return (
     <main
       className={`font-inter grid grid-cols-1 md:grid-cols-8 lg:grid-cols-12 xl:grid-cols-14 bg-background min-h-screen text-background`}
