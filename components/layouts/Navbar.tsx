@@ -5,6 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Bell } from "lucide-react";
 import { Folder } from "lucide-react";
 import { ToggleMode } from "../ToggleMode";
+import { LayoutDashboard } from "lucide-react";
 import ElementWrapper from "../ElementWrapper";
 import {
   DropdownMenu,
@@ -59,13 +60,23 @@ function Navbar() {
                 Notifications
               </span>
             </ElementWrapper>
+            <Link href={`/dashboard/${user?.sub}/interviews`}>
+              <ElementWrapper>
+                <Folder width={16} height={16} />
+                <span className="hidden md:block text-xs font-bold">
+                  Interviews
+                </span>
+              </ElementWrapper>
+            </Link>
+            <Link href={`/dashboard/${user?.sub}`}>
+              <ElementWrapper>
+                <LayoutDashboard width={16} height={16} />
+                <span className="hidden md:block text-xs font-bold">
+                  Dashboard
+                </span>
+              </ElementWrapper>
+            </Link>
 
-            <ElementWrapper>
-              <Folder width={16} height={16} />
-              <span className="hidden md:block text-xs font-bold">
-                Interviews
-              </span>
-            </ElementWrapper>
             <ElementWrapper>
               <ToggleMode />
             </ElementWrapper>

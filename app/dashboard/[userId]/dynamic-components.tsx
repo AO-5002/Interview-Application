@@ -30,6 +30,7 @@ import {
 } from "@/components/ui/form";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
+import path from "path";
 
 const items = [
   {
@@ -181,19 +182,17 @@ function DialogCreateRoom() {
 function LoadButtonAccordingly({ type }: { type: string }) {
   const router = useRouter();
   const pathname = usePathname();
+
+  function handleRoute() {
+    console.log(pathname);
+    router.push(`${pathname}/assignments`);
+  }
   return (
     <>
       {type === "Create" && <DialogCreateRoom />}
       {type === "Join" && <Button>Join</Button>}
       {type === "View" && <Button>View</Button>}
-      {type === "Build" && (
-        <div className="flex flex-row items-center gap-4 w-full justify-between">
-          <Button onClick={() => router.push(`${pathname}/assignments`)}>
-            Build
-          </Button>
-          <EllipsisVertical />
-        </div>
-      )}
+      {type === "Build" && <Button onClick={handleRoute}>Tests</Button>}
     </>
   );
 }

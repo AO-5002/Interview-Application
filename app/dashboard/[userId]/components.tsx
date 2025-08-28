@@ -9,6 +9,16 @@ interface BoxContentProps {
   type: string;
 }
 
+function HeaderWrapper({ children }: { children: React.ReactNode }) {
+  return (
+    <div className=" w-full px-4 flex flex-col items-start justify-center gap-2">
+      <h1 className="text-4xl text-zinc-400 font-extralight tracking-wide">
+        {children}
+      </h1>
+    </div>
+  );
+}
+
 function BoxLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="w-full flex flex-wrap items-center justify-center gap-8">
@@ -19,7 +29,7 @@ function BoxLayout({ children }: { children: React.ReactNode }) {
 
 function Card({ data }: { data: BoxContentProps }) {
   return (
-    <div className="shrink-0 w-full md:w-64 h-auto rounded-lg bg-background flex flex-col items-center justify-between gap-8 p-4 text-foreground border shadow-lg">
+    <div className="shrink-0 w-full flex-row md:w-64 h-48 md:h-auto rounded-lg bg-background flex md:flex-col items-center justify-between gap-8 p-4 text-foreground border shadow-lg">
       <div className="flex flex-col items-center gap-4">
         <div className="self-start flex flex-col gap-2 items-start">
           <div className="flex items-center justify-center bg-foreground p-2 rounded-full text-background">
@@ -70,4 +80,4 @@ const BoxData: BoxContentProps[] = [
   },
 ];
 
-export { Card, BoxLayout, type BoxContentProps, BoxData };
+export { Card, BoxLayout, type BoxContentProps, BoxData, HeaderWrapper };

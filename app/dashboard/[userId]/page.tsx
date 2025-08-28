@@ -1,6 +1,6 @@
 import PageLayout from "@/components/layouts/PageLayout";
 import React from "react";
-import { Card, BoxLayout, BoxData } from "./components";
+import { Card, BoxLayout, BoxData, HeaderWrapper } from "./components";
 
 function page() {
   const currentRole = "recruiter";
@@ -8,11 +8,7 @@ function page() {
   return (
     <PageLayout>
       <div className="py-12 w-full h-full flex flex-col items-center justify-start gap-24">
-        <div className=" w-full px-4 flex flex-col items-start justify-center gap-2">
-          <h1 className="text-4xl text-zinc-400 font-extralight tracking-wide">
-            Dashboard
-          </h1>
-        </div>
+        <HeaderWrapper>Dashboard</HeaderWrapper>
         <BoxLayout>
           {BoxData.filter((item) => {
             return item.associatedRole === currentRole;
