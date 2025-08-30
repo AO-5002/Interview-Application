@@ -6,7 +6,7 @@ import { Bell } from "lucide-react";
 import { Folder } from "lucide-react";
 import { ToggleMode } from "../ToggleMode";
 import { LayoutDashboard } from "lucide-react";
-import ElementWrapper from "../ElementWrapper";
+import { NavWrapper } from "../ElementWrappers";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -54,35 +54,35 @@ function Navbar() {
 
         {isAuthenticated && (
           <div className="flex flex-row gap-4 items-center">
-            <ElementWrapper>
+            <NavWrapper>
               <Bell height={16} width={16} />
               <span className="hidden md:block text-xs font-bold">
                 Notifications
               </span>
-            </ElementWrapper>
+            </NavWrapper>
             <Link href={`/dashboard/${user?.sub}/interviews`}>
-              <ElementWrapper>
+              <NavWrapper>
                 <Folder width={16} height={16} />
                 <span className="hidden md:block text-xs font-bold">
                   Interviews
                 </span>
-              </ElementWrapper>
+              </NavWrapper>
             </Link>
             <Link href={`/dashboard/${user?.sub}`}>
-              <ElementWrapper>
+              <NavWrapper>
                 <LayoutDashboard width={16} height={16} />
                 <span className="hidden md:block text-xs font-bold">
                   Dashboard
                 </span>
-              </ElementWrapper>
+              </NavWrapper>
             </Link>
 
-            <ElementWrapper>
+            <NavWrapper>
               <ToggleMode />
-            </ElementWrapper>
-            <ElementWrapper>
+            </NavWrapper>
+            <NavWrapper>
               <DropDownProfile user={user} logout={logout} />
-            </ElementWrapper>
+            </NavWrapper>
           </div>
         )}
       </nav>

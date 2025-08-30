@@ -187,10 +187,15 @@ function LoadButtonAccordingly({ type }: { type: string }) {
     console.log(pathname);
     router.push(`${pathname}/assignments`);
   }
+
+  function joinRoomRoute() {
+    router.push(`${pathname}/join/1`);
+  }
+
   return (
     <>
       {type === "Create" && <DialogCreateRoom />}
-      {type === "Join" && <Button>Join</Button>}
+      {type === "Join" && <Button onClick={joinRoomRoute}>Join</Button>}
       {type === "View" && <Button>View</Button>}
       {type === "Build" && <Button onClick={handleRoute}>Tests</Button>}
     </>

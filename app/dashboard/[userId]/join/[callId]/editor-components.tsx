@@ -2,26 +2,26 @@
 import React from "react";
 import { useState, useRef } from "react";
 import Editor, { DiffEditor, useMonaco, loader } from "@monaco-editor/react";
-import ElementWrapper from "@/components/ElementWrapper";
+import { StreamWrapperItems } from "@/components/ElementWrappers";
 import { Play, Upload, CodeXml } from "lucide-react";
 import { LanguageRadio } from "./LanguageRadio";
 
 function EditorOptions() {
   return (
     <div className="flex flex-row items-center gap-4 pt-8">
-      <ElementWrapper>
+      <StreamWrapperItems>
         <Play />
         Run
-      </ElementWrapper>
-      <ElementWrapper>
+      </StreamWrapperItems>
+      <StreamWrapperItems>
         <Upload />
         Submit
-      </ElementWrapper>
-      <ElementWrapper>
+      </StreamWrapperItems>
+      <StreamWrapperItems>
         <LanguageRadio>
           <CodeXml />
         </LanguageRadio>
-      </ElementWrapper>
+      </StreamWrapperItems>
     </div>
   );
 }

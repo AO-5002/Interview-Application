@@ -1,5 +1,7 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { Dispatch, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { useCallContext } from "@/components/providers/CallProvider";
 import {
   CallControls,
   CallingState,
@@ -15,9 +17,9 @@ import "@stream-io/video-react-sdk/dist/css/styles.css";
 
 const apiKey = "mmhfdzb5evj2";
 const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL3Byb250by5nZXRzdHJlYW0uaW8iLCJzdWIiOiJ1c2VyL0ZyaW5nZV9Db25ncmVzcyIsInVzZXJfaWQiOiJGcmluZ2VfQ29uZ3Jlc3MiLCJ2YWxpZGl0eV9pbl9zZWNvbmRzIjo2MDQ4MDAsImlhdCI6MTc1NTgxMzcyMSwiZXhwIjoxNzU2NDE4NTIxfQ.OYbkE9sBYL6SEcknSY-mlt3uY_qDk9xY2hdSrrN1qPI";
-const userId = "Fringe_Congress";
-const callId = "WNfWixNhwoIV6XtL1dyb8";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL3Byb250by5nZXRzdHJlYW0uaW8iLCJzdWIiOiJ1c2VyL0lsbHVzdHJpb3VzX0xheWVyIiwidXNlcl9pZCI6IklsbHVzdHJpb3VzX0xheWVyIiwidmFsaWRpdHlfaW5fc2Vjb25kcyI6NjA0ODAwLCJpYXQiOjE3NTY1NzczMDUsImV4cCI6MTc1NzE4MjEwNX0.DMGVDSCwm60SSqQRGfeQ1Y9NQTWip5UekHFggkT5-XM";
+const userId = "Illustrious_Layer";
+const callId = "Bn0dfC8d1NiSf6vOHsANt";
 
 const user: User = {
   id: userId,
@@ -27,6 +29,19 @@ const user: User = {
 
 const client = new StreamVideoClient({ apiKey, user, token });
 const call = client.call("default", callId);
+
+// Method for handling calls
+
+function JoinCallBtn() {
+  const { setInCall } = useCallContext();
+  const handleClick = () => {
+    setInCall(true);
+  };
+
+  return <Button onClick={handleClick}>Join Call</Button>;
+}
+
+// UI stuff below
 
 export const MyUILayout = () => {
   const { useCallCallingState } = useCallStateHooks();
@@ -64,7 +79,7 @@ export const MyUILayout = () => {
 
 export default function StreamComponent() {
   return (
-    <div className="border border-black">
+    <div className="">
       <StreamVideo client={client}>
         <StreamCall call={call}>
           <MyUILayout />
@@ -73,3 +88,5 @@ export default function StreamComponent() {
     </div>
   );
 }
+
+export { JoinCallBtn, StreamComponent };

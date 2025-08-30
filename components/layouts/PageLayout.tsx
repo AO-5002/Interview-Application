@@ -12,9 +12,9 @@ function PageLayout({
 }) {
   const { isAuthenticated } = useAuth0();
 
-  if (!isAuthenticated) {
-    return <NoAuthPage />;
-  }
+  // if (!isAuthenticated) {
+  //   return <NoAuthPage />;
+  // }
 
   return (
     <main
