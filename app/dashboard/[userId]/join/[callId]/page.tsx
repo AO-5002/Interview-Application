@@ -1,7 +1,6 @@
 import PageLayout from "@/components/layouts/PageLayout";
-
 import { CallProvider } from "@/components/providers/CallProvider";
-import { RenderedPage } from "./lobby-room";
+import { RenderedPage } from "./page-components";
 
 export default function page() {
   return (

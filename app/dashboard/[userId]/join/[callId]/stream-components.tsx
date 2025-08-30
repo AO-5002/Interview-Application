@@ -1,10 +1,14 @@
 "use client";
-import React, { Dispatch, useEffect } from "react";
+import React, { useEffect } from "react";
+import { DoorOpen, PhoneCall } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCallContext } from "@/components/providers/CallProvider";
+import { useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import {
   CallControls,
   CallingState,
+  DeviceSettings,
   SpeakerLayout,
   StreamCall,
   StreamTheme,
@@ -12,6 +16,7 @@ import {
   StreamVideoClient,
   useCallStateHooks,
   User,
+  VideoPreview,
 } from "@stream-io/video-react-sdk";
 import "@stream-io/video-react-sdk/dist/css/styles.css";
 
@@ -38,10 +43,65 @@ function JoinCallBtn() {
     setInCall(true);
   };
 
-  return <Button onClick={handleClick}>Join Call</Button>;
+  return (
+    <Button onClick={handleClick}>
+      <PhoneCall />
+      Join
+    </Button>
+  );
+}
+
+function LeaveCallBtn() {
+  const router = useRouter();
+  const params = useParams();
+  const userId = params.userId; // Gets the [userId] from your route
+  const { setInCall } = useCallContext();
+
+  const handleClick = async () => {
+    setInCall(false);
+
+    // Disconnect everything
+    await call.camera.disable();
+    await call.microphone.disable();
+    await call.leave();
+
+    router.push(`/dashboard/${userId}`);
+  };
+
+  return (
+    <Button onClick={handleClick}>
+      <DoorOpen />
+      Leave
+    </Button>
+  );
 }
 
 // UI stuff below
+
+function CameraPreview() {
+  useEffect(() => {
+    call.camera.enable(); // Enable camera for preview
+  }, []);
+
+  return (
+    <>
+      <StreamVideo client={client}>
+        <StreamCall call={call}>
+          <StreamTheme>
+            <VideoPreview />
+            <div className="w-full flex justify-between gap-4 pt-8">
+              <DeviceSettings />
+              <div className="flex gap-4 items-center">
+                <JoinCallBtn />
+                <LeaveCallBtn />
+              </div>
+            </div>
+          </StreamTheme>
+        </StreamCall>
+      </StreamVideo>
+    </>
+  );
+}
 
 export const MyUILayout = () => {
   const { useCallCallingState } = useCallStateHooks();
@@ -89,4 +149,4 @@ export default function StreamComponent() {
   );
 }
 
-export { JoinCallBtn, StreamComponent };
+export { JoinCallBtn, StreamComponent, CameraPreview };

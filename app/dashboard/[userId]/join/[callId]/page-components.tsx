@@ -1,11 +1,10 @@
 "use client";
-import React, { Dispatch } from "react";
-import { Button } from "@/components/ui/button";
-import { JoinCallBtn } from "./stream-components";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import StreamComponent from "./stream-components";
 import AssignmentUI from "./assignment-components";
 import { useCallContext } from "@/components/providers/CallProvider";
+import { CameraPreview } from "./stream-components";
+
 function ItemWrapper({
   children,
   className,
@@ -31,8 +30,9 @@ import { EditorUI, EditorOptions } from "./editor-components";
 function LobbyPage() {
   return (
     <>
-      <h1>this is the lobby page lol</h1>
-      <JoinCallBtn />
+      <div className="w-full h-full flex flex-col justify-center items-center">
+        <CameraPreview />
+      </div>
     </>
   );
 }
